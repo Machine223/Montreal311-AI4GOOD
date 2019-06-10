@@ -1,6 +1,7 @@
 # Montreal 311
 
 #AI4Good Hackathon 2019
+I am very happy and proud to have participated in this AI hackathon with such wonderful teammates. After hard work we won 1st place winning prize for the best hack and also 1st place for the 311 Montreal hack challenge in same at the MILA - Institut Québécois D'intelligence Artificielle. ! 🏆🙌👏
 
 ## Inspiration
 We are in an era where data is all around us. The tools to use the data are quite complicated to learn and used.  This is where we were inspired to use the powerful **AI** tools at our disposal to automate a chatbot that will do all the work for you. We are fortunate to be able to use them to design a conversation and **analysis platform** to improve the services of the city of Montreal and thus offer a more effective alternative to the Montrealer. We did some research and the last few years in Montreal 311 had **800,000** calls for requests or complaints. Our objective is to bring an **innovative** way to more **effectively** answer the 311 phone call and have some form of **data learning**. We have a waiting time far too long for citizens in the city of Montreal for the 311 service of the city of Montreal. The complaint process can be long and tedious. It is quite difficult to have a traceability of all the data collected by the city of Montreal.
