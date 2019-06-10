@@ -37,8 +37,7 @@ We decided to focus on complains and requests in order to bring some help to the
 ## Improve the analytics dashboard
 We have focused on the real-time notification, so the dashboard has plenty of improvements possible ! We thought about adding a prediction model to the batch dashboard. We thought about analysing the season of the complains, predicting the hours with the most calls or see the unfavoured boroughts in order to focus on them.
 
-
-https://youtu.be/<https://www.youtube.com/watch?v=11Q-ftap19Q>
+[![Watch the video](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image.png)](https://www.youtube.com/watch?v=11Q-ftap19Q0)
 
 [Here the link for the Presentation](https://docs.google.com/presentation/d/1L_7aygwkUjwixJo2dP9uvGhEavrhEBgMVUJMZoLtAZE/edit#slide=id.g5b3a48c2d2_0_5)
 
