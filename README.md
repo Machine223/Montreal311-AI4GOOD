@@ -14,12 +14,13 @@ The types of calls are divided into 4 categories: information requests, requests
 
 ![alt text](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image%20(1).png)
 
+
 ## How we built it
 
 We have standardized the requests made to 311 to have a better visualization of the data and thus have a better traceability of the requests. We offer the possibility of having an interactive platform with visual rendering of the activities made by montréal 311 in the city of montréal. We used machine learning technology with Dialogflow to have a chatbot that can connect to several types of platforms such as facebook messenger, Slask, website...  The chatbot can respond perfectly to the citizens' request and generate a form for the database.  Thereafter, all processed requests are forwarded by our technology to a database with Firebase.  We automated a process with a python script to collect the information obtained from the database and send it to a data analysis and processing software such as Table.  We offer a visualization of the data collected on the dashboard.
 
 ![alt text](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/Screenshot%20from%202019-06-09%2011-26-02.png)
-![alt text](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image.png)
+[![Watch the video](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image.png)](https://www.youtube.com/watch?v=11Q-ftap19Q0)
 
 ## Challenges we ran into
 
@@ -37,7 +38,6 @@ We decided to focus on complains and requests in order to bring some help to the
 ## Improve the analytics dashboard
 We have focused on the real-time notification, so the dashboard has plenty of improvements possible ! We thought about adding a prediction model to the batch dashboard. We thought about analysing the season of the complains, predicting the hours with the most calls or see the unfavoured boroughts in order to focus on them.
 
-[![Watch the video](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image.png)](https://www.youtube.com/watch?v=11Q-ftap19Q0)
 
 [Here the link for the Presentation](https://docs.google.com/presentation/d/1L_7aygwkUjwixJo2dP9uvGhEavrhEBgMVUJMZoLtAZE/edit#slide=id.g5b3a48c2d2_0_5)
 
