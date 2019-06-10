@@ -3,7 +3,6 @@
 #AI4Good Hackathon 2019
 
 I am very happy and proud to have participated in this AI hackathon with such wonderful teammates. After hard work we won **1st place winning prize for the best hack** and also **1st place for the 311 Montreal hack challenge** in same at the MILA - Institut Québécois D'intelligence Artificielle. ! 🏆🙌👏
-[![Watch the video](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/Logo-white.png)](https://bot.dialogflow.com/6d91505e-3650-414f-ac7a-4c9a9d94d860)
 
 
 ## Inspiration
@@ -39,9 +38,9 @@ We decided to focus on complains and requests in order to bring some help to the
 We have focused on the real-time notification, so the dashboard has plenty of improvements possible ! We thought about adding a prediction model to the batch dashboard. We thought about analysing the season of the complains, predicting the hours with the most calls or see the unfavoured boroughts in order to focus on them.
 
 
-
-Link for ChatBot demo : https://bot.dialogflow.com/6d91505e-3650-414f-ac7a-4c9a9d94d860
+https://youtu.be/<https://www.youtube.com/watch?v=11Q-ftap19Q>
 
 [Here the link for the Presentation](https://docs.google.com/presentation/d/1L_7aygwkUjwixJo2dP9uvGhEavrhEBgMVUJMZoLtAZE/edit#slide=id.g5b3a48c2d2_0_5)
 
 Link for ChatBot demo : https://bot.dialogflow.com/6d91505e-3650-414f-ac7a-4c9a9d94d860
+[![Watch the video](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/Logo-white.png)](https://bot.dialogflow.com/6d91505e-3650-414f-ac7a-4c9a9d94d860)
