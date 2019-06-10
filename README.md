@@ -2,18 +2,26 @@
 
 #AI4Good Hackathon 2019
 
-I am very happy and proud to have participated in this AI hackathon with such wonderful teammates. After hard work we won 1st place winning prize for the best hack and also 1st place for the 311 Montreal hack challenge in same at the MILA - Institut Québécois D'intelligence Artificielle. ! 🏆🙌👏
+I am very happy and proud to have participated in this AI hackathon with such wonderful teammates. After hard work we won **1st place winning prize for the best hack** and also **1st place for the 311 Montreal hack challenge** in same at the MILA - Institut Québécois D'intelligence Artificielle. ! 🏆🙌👏
+
+
 
 ## Inspiration
 We are in an era where data is all around us. The tools to use the data are quite complicated to learn and used.  This is where we were inspired to use the powerful **AI** tools at our disposal to automate a chatbot that will do all the work for you. We are fortunate to be able to use them to design a conversation and **analysis platform** to improve the services of the city of Montreal and thus offer a more effective alternative to the Montrealer. We did some research and the last few years in Montreal 311 had **800,000** calls for requests or complaints. Our objective is to bring an **innovative** way to more **effectively** answer the 311 phone call and have some form of **data learning**. We have a waiting time far too long for citizens in the city of Montreal for the 311 service of the city of Montreal. The complaint process can be long and tedious. It is quite difficult to have a traceability of all the data collected by the city of Montreal.
+
+![alt text](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/Screenshot%20from%202019-06-09%2011-26-02.png)
 
 ## What it does
 
 The types of calls are divided into 4 categories: information requests, requests, complaints and comments. Requests may include road reports or missing snow removal on your street. We offer the citizen of the city of Montreal the opportunity to have an available and efficient service at all times. The Lama bot system allows us to automate the entire process of responding to the citizen and creating requests to respond to the request in real time.
 
+![alt text](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image%20(1).png)
+
 ## How we built it
 
 We have standardized the requests made to 311 to have a better visualization of the data and thus have a better traceability of the requests. We offer the possibility of having an interactive platform with visual rendering of the activities made by montréal 311 in the city of montréal. We used machine learning technology with Dialogflow to have a chatbot that can connect to several types of platforms such as facebook messenger, Slask, website...  The chatbot can respond perfectly to the citizens' request and generate a form for the database.  Thereafter, all processed requests are forwarded by our technology to a database with Firebase.  We automated a process with a python script to collect the information obtained from the database and send it to a data analysis and processing software such as Table.  We offer a visualization of the data collected on the dashboard.
+
+![alt text](https://github.com/Machine223/Montreal311-AI4GOOD/blob/master/Image/image.png)
 
 ## Challenges we ran into
 
