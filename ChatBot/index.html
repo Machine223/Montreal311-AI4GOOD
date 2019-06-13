@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Montréal 311</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' href='https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+  </head>
+
+  <body>
+      <div class="row row1">
+        <div>
+          <div class = "container-inline" id = "velo">
+            <a href="#">
+              <h1>Montréal 311</h1>
+            </a>
+          </div>
+          <div class = "container-inline" id = "accueil">
+            <a href="#">
+              <h2>Accueil</h2>
+            </a>
+          </div>
+          <div class = "container-inline">
+            <i class="fa fa-globe" aria-hidden="true" align='right'></i>
+          </div>
+        </div>
+      </div>
+    <div class = "wrapper">
+      <div class = "row">
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Dashboard</a></li>
+            <li><a data-toggle="tab" href="#conversations">Converstations</a></li>
+            <li><a data-toggle="tab" href="#tableau">Utilisateurs</a></li>
+            <li><a data-toggle="tab" href="#aide">Aide</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class = 'tab-content'>
+        <div id="home" class="tab-pane fade in active">
+          <div class = "row">
+            <div class = "col-sm-4 container1">
+              <div class="ui-widget">
+                <input id = "search_bar" class = 'search'>
+              </div>
+              <h4>Localisation:</h4>
+              <hr>
+              <h5 id="localisation">ChatBot</h5>
+              <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/6d91505e-3650-414f-ac7a-4c9a9d94d860"></iframe>
+            </div>
+            <div class = "col-sm-8 container">
+              <h4>État des demandes</h4>
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span>Nombre de demande aujourd'hui</span>
+                      <p id='ids'>-</p>
+                    </td>
+                    <td>
+                      <span>test</span>
+                      <p id='vd'>-</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>test</span>
+                      <p id='b'>-</p>
+                    </td>
+                    <td>
+                      <span>test</span>
+                      <p id='bd'>-</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>test</span>
+                       <p id='s'>-</p>
+                    </td>
+                    <td>
+                      <span>test</span>
+                       <p id='vid'>-</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>test</span>
+                      <p id='hs'>-</p>
+                    </td>
+                    <td>
+                      <span>test</span>
+                      <p id='bid'>-</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id = "map"></div>
+            <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+            <button onclick="changeGradient()">Change gradient</button>
+            <button onclick="changeRadius()">Change radius</button>
+            <button onclick="changeOpacity()">Change opacity</button>
+        </div>
+        <div id="tableau" class="tab-pane fade">
+          <h3>État des toutes les stations de vélos</h3>
+          <table id='dataTable' class ='display' cellspacing="0" width='100%'>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var map;
+      var marker;
+      var positionInit = {lat: 45.530655, lng: -73.613690};
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: positionInit,
+          zoom: 16
+        });
+        marker = new google.maps.Marker({
+          position: positionInit,
+          map: map,
+          animation: google.maps.Animation.BOUNCE,
+          title: 'Data map'
+        });
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+      }
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // Heatmap data: 500 Points
+      function getPoints() {
+        return [
+          new google.maps.LatLng(45.529054, -73.606019),
+          new google.maps.LatLng(45.529054, -73.606018),
+          new google.maps.LatLng(45.528889, -73.605633),
+          new google.maps.LatLng(45.528888, -73.605632),    
+          new google.maps.LatLng(45.528819, -73.605632),
+          new google.maps.LatLng(45.528476, -73.604700),
+          new google.maps.LatLng(45.530813, -73.609785),
+          new google.maps.LatLng(45.530813, -73.609785),
+          new google.maps.LatLng(45.533395, -73.605510),
+          new google.maps.LatLng(45.533395, -73.605510),
+          new google.maps.LatLng(45.531267, -73.614602),
+          new google.maps.LatLng(45.528446, -73.604700),
+          new google.maps.LatLng(45.530823, -73.609725),
+          new google.maps.LatLng(45.530823, -73.609735),
+          new google.maps.LatLng(45.533315, -73.605512),
+          new google.maps.LatLng(45.533325, -73.605511),
+          new google.maps.LatLng(45.531217, -73.614603),
+          new google.maps.LatLng(45.531267, -73.614602),
+          new google.maps.LatLng(45.528446, -73.604700),
+          new google.maps.LatLng(45.530823, -73.609725),
+          new google.maps.LatLng(45.530823, -73.609735),
+          new google.maps.LatLng(45.533315, -73.605512),
+          new google.maps.LatLng(45.533325, -73.605511),
+          new google.maps.LatLng(45.531214, -73.614603),
+          new google.maps.LatLng(45.531223, -73.614602),
+          new google.maps.LatLng(45.528423, -73.604702),
+          new google.maps.LatLng(45.530821, -73.609722),
+          new google.maps.LatLng(45.530821, -73.609731),
+          new google.maps.LatLng(45.533312, -73.605512),
+          new google.maps.LatLng(45.533325, -73.605516),
+          new google.maps.LatLng(45.531217, -73.614604),
+          new google.maps.LatLng(45.533325, -73.605511),
+          new google.maps.LatLng(45.531217, -73.614603),
+          new google.maps.LatLng(45.531267, -73.614602),
+          new google.maps.LatLng(45.528446, -73.604700),
+          new google.maps.LatLng(45.530823, -73.609725),
+          new google.maps.LatLng(45.530823, -73.609735),
+          new google.maps.LatLng(45.533315, -73.605512),
+          new google.maps.LatLng(45.533325, -73.605511),
+          new google.maps.LatLng(45.531214, -73.614603),
+          new google.maps.LatLng(45.531223, -73.614602),
+          new google.maps.LatLng(45.528423, -73.604702),
+          new google.maps.LatLng(45.530821, -73.609722),
+          new google.maps.LatLng(45.530821, -73.609731),
+          new google.maps.LatLng(45.533312, -73.605512),
+          new google.maps.LatLng(45.533325, -73.605516),
+          new google.maps.LatLng(45.531217, -73.614604),
+          new google.maps.LatLng(45.533325, -73.605511),
+          new google.maps.LatLng(45.531217, -73.614603),
+          new google.maps.LatLng(45.531267, -73.614603),
+          new google.maps.LatLng(45.528446, -73.604703),
+          new google.maps.LatLng(45.530825, -73.609723),
+          new google.maps.LatLng(45.530829, -73.609736),
+          new google.maps.LatLng(45.533318, -73.605513),
+          new google.maps.LatLng(45.533322, -73.605517),
+          new google.maps.LatLng(45.531215, -73.614603),
+          new google.maps.LatLng(45.531227, -73.614606),
+          new google.maps.LatLng(45.528426, -73.604708),
+          new google.maps.LatLng(45.530824, -73.609726),
+          new google.maps.LatLng(45.530834, -73.609733),
+          new google.maps.LatLng(45.533311, -73.605518),
+          new google.maps.LatLng(45.533323, -73.605518),
+          new google.maps.LatLng(45.531214, -73.614609),
+          new google.maps.LatLng(45.531214, -73.614603),
+          new google.maps.LatLng(45.531223, -73.614602),
+          new google.maps.LatLng(45.528423, -73.604702),
+          new google.maps.LatLng(45.530821, -73.609722),
+          new google.maps.LatLng(45.530821, -73.609731),
+          new google.maps.LatLng(45.533312, -73.605512),
+          new google.maps.LatLng(45.533325, -73.605516),
+          new google.maps.LatLng(45.531217, -73.614604),
+          new google.maps.LatLng(45.533325, -73.605511),
+          new google.maps.LatLng(45.531217, -73.614603),
+          new google.maps.LatLng(45.531267, -73.614603),
+          new google.maps.LatLng(45.528446, -73.604703),
+          new google.maps.LatLng(45.530825, -73.609723),
+          new google.maps.LatLng(45.530829, -73.609736),
+          new google.maps.LatLng(45.533318, -73.605513),
+          new google.maps.LatLng(45.533322, -73.605543),
+          new google.maps.LatLng(45.531215, -73.614645),
+          new google.maps.LatLng(45.531227, -73.614667),
+          new google.maps.LatLng(45.528426, -73.604745),
+          new google.maps.LatLng(45.530824, -73.609745),
+          new google.maps.LatLng(45.530834, -73.609756),
+          new google.maps.LatLng(45.533311, -73.605576),
+          new google.maps.LatLng(45.533323, -73.605555),
+          new google.maps.LatLng(45.531214, -73.614666),
+          new google.maps.LatLng(45.533345, -73.605512),
+          new google.maps.LatLng(45.533356, -73.605516),
+          new google.maps.LatLng(45.531265, -73.614604),
+          new google.maps.LatLng(45.533387, -73.605511),
+          new google.maps.LatLng(45.531223, -73.614603),
+          new google.maps.LatLng(45.531234, -73.614603),
+          new google.maps.LatLng(45.528476, -73.604703),
+          new google.maps.LatLng(45.530845, -73.609723),
+          new google.maps.LatLng(45.530826, -73.609736),
+          new google.maps.LatLng(45.533334, -73.605513),
+          new google.maps.LatLng(45.533334, -73.605543),
+          new google.maps.LatLng(45.531245, -73.614645),
+          new google.maps.LatLng(45.531223, -73.614667),
+          new google.maps.LatLng(45.528456, -73.604745),
+          new google.maps.LatLng(45.530834, -73.609745),
+          new google.maps.LatLng(45.530823, -73.609756),
+          new google.maps.LatLng(45.533314, -73.605576),
+          new google.maps.LatLng(45.533344, -73.605555),
+          new google.maps.LatLng(45.531214, -73.614666),
+        ];
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjonwWBWoE1W6L8sU7KPl7zkRLSaPNC2o&libraries=visualization&callback=initMap"></script>
+    <script type="text/javascript">
+        /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+        (function(d, m){
+          var kommunicateSettings = {"appId":"1604972bac2cccd2e1bd3fabe343c2b2b","conversationTitle":"Montreal 311","automaticChatOpenOnNavigation":true};
+          var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+          s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+          var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+          window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+    </script>
+  </body>
+</html>
